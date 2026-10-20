@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-2xl mb-4">To do today</h1>
+{% for t in tasks %}
+<form method="post" action="{% url 'done' t.id %}" class="flex justify-between bg-white p-3 rounded mb-2">
+  {% csrf_token %}
+  <span>{{ t.kind }} - {{ t.plant.name }}</span>
+  <button class="bg-green-700 text-white px-3 rounded">Done ✓</button>
+</form>
+{% empty %}<p>Nothing to do 🎉</p>{% endfor %}
+{% endblock %}

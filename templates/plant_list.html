@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-2xl mb-4">My plants</h1>
+{% for p in plants %}
+<a href="{% url 'plant_detail' p.id %}" class="flex gap-4 bg-white p-3 rounded mb-2">
+  <img src="{{ p.photo.url }}" class="w-20 h-20 object-cover rounded">
+  <div><b>{{ p.name }}</b><br>{{ p.species }}</div>
+</a>
+{% empty %}<p>No plants yet. Tap Scan to add one.</p>{% endfor %}
+{% endblock %}
